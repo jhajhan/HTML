@@ -1,0 +1,305 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    width: 100%;
+    height: 50px;
+    background-color: #2C1B47;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    padding-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: medium;
+    position: fixed;
+    top: 0; /* Aligns it to the top of the viewport */
+    left: 0; /* Aligns it to the left side */
+    z-index: 1000;
+
+}
+
+.logocontainer {
+    display: flex;
+    align-items: center;
+}
+
+.navbar img {
+    width: 50px;
+    padding-left: 15px;
+}
+
+.navbar h4 {
+    margin-left: 10px;
+    color: #724C9D;
+    font-weight: bolder;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+
+}
+
+.navbar li {
+    margin-right: 0;
+}
+
+
+.navbar li a {
+    text-decoration: none;
+    color: #DCCAE9;
+    padding: 15px 15px;
+    display: block;
+}
+
+.welcome {
+    background: linear-gradient(to right, #2C1B47 50%, #DCCAE9 0%); /* Dark purple to light purple */
+    width: 100%;
+    height: 100vh; 
+    padding-top: 100px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    text-align: left;
+
+}
+
+.welcome img {
+    width: 400px;
+    margin-top: 35px;
+    margin-right: 100px;
+}
+
+.textcontainer {
+    margin-top: 100px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.textcontainer h1 {
+    font-family: 'Playfair Display', sans-serif; /* Change this to your preferred font */
+    font-size: 2.5rem; /* Adjust size as needed */
+    color: #DCCAE9; /* Or another complementary color */
+    margin: 0; 
+
+}
+
+.textcontainer h3 {
+    justify-content: left;
+    font-family: 'Playfair Display', serif;
+    color: #724C9D;
+}
+
+.textcontainer button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: #724C9D ;
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(to right, #724C9D 20%, #DCCAE9 20%);
+    cursor: pointer;
+}
+
+.about {
+    background-color: white;
+    width: 100%;
+    height: 100vh; 
+    padding-top: 30px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    position: relative;
+}
+
+.about h1 {
+    font-family: 'Playfair Diplay', serif;
+    color: #724C9D;
+    font-weight: bolder;
+    width: 200px;
+    height: 50px;
+    font-size: 3.0rem;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.about .iconcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 150px;
+}
+
+.about .educ, .interests, .skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.about img {
+    width: 250px;
+    text-shadow: 5px 5px 10px rgba(114, 76, 157, 0.9);
+    cursor:pointer;
+    
+}
+
+.about h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: #724C9D ;
+    font-size: 1.5rem;
+    background-color:#DCCAE9;
+    width: 200px;
+    text-align: center;
+}
+
+.educ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* This is necessary for absolute positioning of the info box */
+}
+
+.educ-info {
+    display: none; /* Initially hidden */
+    position: absolute;
+    bottom: -50px; /* Adjust based on how far you want the box to be from the icon */
+    background-color: #724C9D;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 250px;
+
+}
+
+.educ:hover .educ-info {
+    display: block; /* Show info when hovering over the education icon */
+}
+
+
+
+.projects {
+    background-color: #DCCAE9;
+    width: 100%;
+    height: 100vh; 
+    padding-top: 100px;
+    display: flex;  
+    align-items: flex-start; 
+    text-align: left;
+}
+
+
+.projects h1 {
+    font-family: 'Playfair Diplay', serif;
+    color: #2C1B47;
+    font-weight: bolder;
+    width: 200px;
+    height: 50px;
+    right: 100px;
+    font-size: 3.0rem;
+    margin-top: 20px;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.experience {
+    background-color: white;
+    width: 100%;
+    height: 100vh; 
+    padding-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    position: relative;
+}
+
+.contact {
+    background-color: #2C1B47;
+    width: 100%;
+    height: 50vh;
+    padding-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+}
+
+.contact h1 {
+    color:#724C9D;
+    font-size: 2.0rem;
+
+    margin-bottom: 10px;
+    
+}
+
+.contact img {
+    width: 50px;
+}
+
+.contact p {
+    font-family: 'Montserrat', serif;
+    color: white;
+}
+
+
+
+.contact .logos {
+    display: flex;
+    gap: 40px;
+}
+
+.contactcontainer {
+    display: flex;
+    flex-direction: row;
+    gap: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact .socials {
+    display: flex;
+    flex-direction: column; /* Arrange icons and text vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.contact .email {
+    display: flex;
+    flex-direction: column; /* Arrange icons and text vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.contact .rights {
+    font-family: 'Montserrat', serif;
+    color: black;
+    margin-top: 50px; 
+    margin-bottom: 0; 
+    font-size: smaller;
+    text-align: left;
+}
