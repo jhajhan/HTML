@@ -1,0 +1,89 @@
+body {
+    background-color: white; 
+    background-image: url('img/yarn1.jpg'); 
+    background-position: right top; 
+    background-repeat: no-repeat; 
+    background-size: contain; 
+    background-attachment: fixed;
+}
+
+.regform-wrapper {
+    background-color: white;
+    border-radius: 0 20px ;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    margin-left: 80px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+ h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #b34b4f;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+ h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #222;
+    margin-top: 0;
+
+
+}
+
+.personal-details, .address-information, .contact-information, .crochet-experience, .additional-information, .membership-agreement {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h4{
+    margin-bottom: 0px;
+    
+}
+.name, .contact, .gender-container, .birthday {
+    display: flex;
+    gap:20px;
+    align-items: center;
+}
+
+.address, .social-media, .referral {
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+}
+
+
+input[type = "text"], input[type = "date"] ,select {
+    max-width: 100%; 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc;
+    font-size: 14px; 
+}
+
+input[type = "button"] {
+    width: 100%;
+    height: 40px;
+    align-self: center;
+    background-color: #b34b4f;
+    color: whitesmoke;
+    border-color: white;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
