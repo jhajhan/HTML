@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel = "icon" type = "image/x-icon" href = "img/logo.png">
         <title>Registration Form</title>
     </head>
 
@@ -13,20 +14,20 @@
             <h1>Cavite Crocheter Club</h1>
             <h3>Registration Form</h3>
 
-            <form>
+            <form action = "#" method = "post">
                 <section class = "personal-details">
                     <h4>Personal Details</h4>
                     <div class = "name">
                         <label for = "fname">First Name</label>
-                        <input type = "text" id = "fname" class = "fname">
+                        <input type = "text" id = "fname" class = "fname" required>
                         <label for = "lname">Last Name</label>
-                        <input type = "text" id = "lname" class = "lname">
+                        <input type = "text" id = "lname" class = "lname" required>
                     </div>
                     
             
                     <div class = "birthday">
                         <label for = "bday">Birthday</label>
-                        <input type = "date" id = "bday" class = "bday">  
+                        <input type = "date" id = "bday" class = "bday" required>  
                     </div>
                         
                     <div class = "gender-container">
@@ -44,14 +45,14 @@
                     <h4>Address Information</h4>
 
                         <label for = "city">City</label>
-                        <select id = "city" name = "city">
+                        <select id = "city" name = "city" required>
                         </select>
     
                         <label for = "barangay">Barangay</label>
-                        <select id = "barangay" name = "barangay"></select>
+                        <select id = "barangay" name = "barangay" required></select>
     
                         <label for = "street-address">Street Address</label>
-                        <input type = "text" id = "street-address" class = "street-address">
+                        <input type = "text" id = "street-address" class = "street-address" required>
                            
                 </section>
 
@@ -60,9 +61,9 @@
 
                     <div class = "contact">
                         <label for = "contactno">Contact Number</label>
-                        <input type = "text" id = "contactno" class = "contactno">
+                        <input type = "text" id = "contactno" class = "contactno" required>
                         <label for = "email">Email</label>
-                        <input type = "text" id = "email" class = "email">
+                        <input type = "text" id = "email" class = "email" required>
                     </div>
                 </section>
 
@@ -122,7 +123,7 @@
                     </div>
                 </section>
 
-                <input type = "button" value = "Register"> 
+                <input type = "submit" value = "Register" name = "Register"> 
 
 
             </form>

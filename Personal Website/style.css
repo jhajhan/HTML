@@ -1,17 +1,19 @@
+
+
 html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
-
-
-.body {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 .navbar {
@@ -24,12 +26,26 @@ html, body {
     padding: 0 20px;
     padding-top: 5px;
     font-family: 'Montserrat', sans-serif;
-    font-size: medium;
+    font-size: rem;
     position: fixed;
-    top: 0; /* Aligns it to the top of the viewport */
-    left: 0; /* Aligns it to the left side */
+    top: 0; 
+    left: 0; 
     z-index: 1000;
 
+}
+
+.checkbtn {
+    font-size: 30px;
+    color:#DCCAE9;
+    margin-left: a;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
 }
 
 .logocontainer {
@@ -40,6 +56,7 @@ html, body {
 .navbar img {
     width: 50px;
     padding-left: 15px;
+    cursor: pointer;
 }
 
 .navbar h4 {
@@ -59,6 +76,18 @@ html, body {
 
 .navbar li {
     margin-right: 0;
+    font-size: 1rem;
+}
+
+.navbar li:hover, .navbar li.active {
+    text-align: center;
+    background: #724C9D;
+    padding: auto auto;
+    border-radius: 20px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+   
 }
 
 
@@ -66,11 +95,12 @@ html, body {
     text-decoration: none;
     color: #DCCAE9;
     padding: 15px 15px;
+    margin: 5px;
     display: block;
 }
 
 .welcome {
-    background: linear-gradient(to right, #2C1B47 50%, #DCCAE9 0%); /* Dark purple to light purple */
+    background: linear-gradient(to right, #2C1B47 50%, #DCCAE9 0%); 
     width: 100%;
     height: 100vh; 
     padding-top: 100px;
@@ -92,17 +122,19 @@ html, body {
     margin-left: 100px;
     display: flex;
     flex-direction: column;
+    max-width: 500px;
 }
 
 .textcontainer h1 {
-    font-family: 'Playfair Display', sans-serif; /* Change this to your preferred font */
-    font-size: 2.5rem; /* Adjust size as needed */
-    color: #DCCAE9; /* Or another complementary color */
+    font-family: 'Playfair Display', sans-serif; 
+    font-size: 2.5rem; 
+    color: #DCCAE9; 
     margin: 0; 
 
 }
 
 .textcontainer h3 {
+    font-size: 1.2rem;
     justify-content: left;
     font-family: 'Playfair Display', serif;
     color: #724C9D;
@@ -120,6 +152,11 @@ html, body {
     background: linear-gradient(to right, #724C9D 20%, #DCCAE9 20%);
     cursor: pointer;
     transition: transform 0.2s;
+}
+
+.buttoncontainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .textcontainer button:hover{
@@ -144,23 +181,23 @@ html, body {
     flex-direction: column;
     justify-content: center;
     text-align: left;
-    max-width: 500px; /* Set a width limit for better readability */
-    line-height: 1.6; /* Increase line spacing for better readability */
-    font-size: 1.2rem; /* Adjust the font size to make it easier to read */
-    color: #333; /* A dark grey for better readability than black */
+    max-width: 500px;
+    line-height: 1.6; 
+    font-size: 1.2rem; 
+    color: #333;
 }
 
 .about .introduction h2 {
     font-family: 'Playfair Display', serif;
     color: #724C9D;
-    margin-bottom: 10px; /* Add space between the heading and the paragraph */
-    font-size: 2.5rem; /* A slightly larger heading */
+    margin-bottom: 10px; 
+    font-size: 2.5rem; 
 }
 
 .about .introduction p {
     font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
-    text-align: justify; /* Align the text in a more formal way */
+    text-align: justify; 
     font-size: smaller;
 }
 
@@ -173,7 +210,7 @@ html, body {
 
 .details .interests, .details .education {
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+    font-size: 0.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,18 +247,18 @@ html, body {
 }
 
 .skills h1 {
-    font-family: 'Playfair Display', serif; /* Fixed font family spelling */
+    font-family: 'Playfair Display', serif; 
     color: #DCCAE9;
     font-weight: bolder;
     font-size: 3.0rem;
-    margin: 20px auto 20px; /* Center h1 and add vertical margin */
-    text-align: center; /* Center text */
+    margin: 20px auto 20px; 
+    text-align: center; 
 }
 
 .skills .cards {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center cards */
+    justify-content: center; 
     margin: 0 auto;
     padding: 20px;
     flex-wrap: wrap;
@@ -230,31 +267,57 @@ html, body {
 
 .skills .card {
     background: linear-gradient(to bottom, #724C9D, #DCCAE9 );
-    width: 250px;
-    height: 220px;
-    margin: 10px; /* Adjust margin for spacing */
+    width: 220px;
+    height: 200px;
+    margin: 10px; 
     padding: 15px;
     border-radius: 20px;
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px;
-    transition: transform 0.2s;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
-.skills .card:hover {
-    transform: scale(1.02);
+
+.front-card {
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+
 }
+
+.skills .card:hover .card-details {
+    background-color:#DCCAE9;
+    display: block;
+    opacity: 1;
+}
+
+.skills .card-details {
+    display: none;
+    padding: 10px;
+    transform: translateY(-200px);
+    color:#2C1B47;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+}
+
+.skills .card.details p {
+    margin: 5px 0;
+}
+
 
 .skills h2 {
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
     color:#DCCAE9
 }
 
 .skills img {
     width: 150px;
     margin-bottom: 10px;
+    margin-top: 0;
 }
 
 .projects {
@@ -278,7 +341,7 @@ html, body {
     margin-bottom: 40px;       
 }
 
-.projects .project-cards {
+.projects .cards {
     display: flex;            
     flex-direction: column;     
     align-items: center;      
@@ -324,28 +387,22 @@ html, body {
 
 .projects p {
     font-family: 'Montserrat', sans-serif;  
+    font-size: 0.9rem;
     color: #2C1B47;             
     padding: 10px;              
     max-width: 600px;          
-    line-height: 1.5;          
+    line-height: 1.5;   
+  
+}
+
+p.gm {
+    font-size: 0.8rem;
 }
 
 .projects h4 {
     font-family: 'Montserrat', sans-serif;
+    font-size:1rem;
     color:#2C1B47
-}
-
-
-.experience {
-    background-color: white;
-    width: 100%;
-    height: 100vh; 
-    padding-top: 20px;
-    display: flex; 
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    position: relative;
 }
 
 .experience {
@@ -368,10 +425,20 @@ html, body {
     margin-bottom: 40px; 
 }
 
-.sllider-wrapper {
+.slides {
+    display: flex;
+    gap: 100px
+}
+
+.slides h4 {
+    font-family: 'Montserrat';
+    color:#2C1B47;
+    text-align: center;
+}
+
+.slider-wrapper {
     position: relative;
-    max-width: 30rem; 
-    width: 100%; 
+    width: 25rem; 
     margin: 0 auto;
 }
 
@@ -386,11 +453,11 @@ html, body {
 }
 
 .slider img {
-    width: 250px;
-    flex: 0 0 100%; /* Each image takes 80% width of the slider */
-    scroll-snap-align: start; /* Align to start of the scroll */
-    object-fit: cover; /* Ensure images cover the space without distortion */
-    margin: 0 auto; /* Center images within the slider */
+    width: 150px;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover; 
+    margin: 0 auto;
 }
 
 .slider-nav {
@@ -447,34 +514,20 @@ html, body {
 
 .contact p {
     font-family: 'Montserrat', serif;
+    font-size: 1rem;
     color: white;
 }
 
-.contact .logos {
-    display: flex;
-    gap: 70px;
-}
 
 .contactcontainer {
     display: flex;
     flex-direction: row;
-    gap: 150px;
+    gap: 60px;
     align-items: center;
     justify-content: center;
+    margin: 20px auto;
 }
 
-.contact .socials {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-}
-
-.contact .email {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    border-radius: 50px;
-}
 
 .email img {
     width: 35px;
@@ -488,10 +541,267 @@ html, body {
 
 .contact .rights {
     font-family: 'Playfair Display', serif;
-    color: black;
-    margin-top: 30px; 
-    margin-bottom: 5px; 
-    margin-right: 50px;
-    font-size: smaller;
-    align-self: flex-end;
+    color:#DCCAE9;
+    font-size: 0.6rem;
+    margin-top: 50px;
+}
+
+@media (max-width: 980px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .about {
+        margin: 0 auto;
+        height: 100vh;
+        max-width: 800px;
+    }
+
+    .introduction p {
+        max-width: 500px;
+    }
+
+    .skills {
+        height: 140vh;
+    }
+
+    .projects {
+        height: 160vh;
+    }
+
+    .projects .card {
+        max-width: 700px;
+    }
+
+    .experience {
+        padding-top: 70px;
+        margin: 0 auto;
+    }
+
+   
+}
+
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+        margin-left: auto;
+    }
+
+
+
+    nav ul {
+        position:fixed;
+        width: 100%;
+        height: 100vh;
+        top: 50px;
+        left: -100%;
+        text-align: center;
+        flex-direction: column;
+        transition: all .5s;
+        background-color: #2C1B47;
+    }
+
+    nav ul li {
+        display: block;
+    }
+
+    nav ul li a:active {
+        display: none;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    #check:checked ~ nav ul{
+        left: 0;
+    }
+
+    .welcome {
+        height: 70vh
+    }
+
+    .welcome img {
+        margin-right: 30px;
+        width: 350px;
+    }
+
+    .textcontainer {
+        max-width: 250px;
+    }
+
+    .about {
+        max-width: 600px;
+    }
+
+    .projects .card {
+        max-width:600px;
+    }
+
+    .projects p {
+        font-size: 0.75rem;
+    }
+
+    .contact .logos {
+        gap: 35px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    html {
+        font-size: 14px;;
+    }
+
+    .welcome {
+        height: 100vh;
+        align-items: center;
+        justify-items: flex-start;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    .textcontainer {
+        max-width: 200px;
+        margin-bottom: 50px;
+    }
+
+    .welcome img {
+        width: 300px;
+    }
+
+    .about {
+        height: 120vh;
+    }
+
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 10px;
+    }
+
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        height: 110vh;
+        background: #2C1B47;
+        gap: 30px; 
+        justify-content: center; 
+        align-items: center;
+        margin: 0px auto;
+      }
+      
+      .welcome img {
+        order: 1;
+        align-self: center;
+        margin: 20 auto;
+        width: 200px;
+      }
+      
+      .welcome .textcontainer {
+        order: 2;
+        margin: 0 auto; 
+    
+        padding: 0 auto;
+        text-align: center;
+        align-items: center;
+        max-width: 300px;
+      }
+
+      .buttoncontainer {
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .welcome button {
+        font-size: 1rem;
+        width: 120px;
+        height: 30px;
+        border-width: 10px;
+      }
+
+      .about {
+        height: 120vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 350px;
+        margin: 20px auto;
+        margin-top: 0;
+      }
+
+      .skills {
+        height: 110vh;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 20px auto;
+        padding-top: 20px;
+        margin-top: 0;
+      }
+
+
+      .skills img {
+        width: 100px;
+      }
+
+      .skills .card {
+        width: 150px;
+        height: 150px
+      }
+      
+      .projects {
+        height: 240vh;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 20px auto;
+        padding-top: 20px;
+        margin-top: 0;
+      }
+
+    
+
+     .projects .card {
+        width: 300px;
+        height: 80%;
+        flex-direction: column;
+     }
+
+     .experience {
+        height: 100vh;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 20px auto;
+        padding-top: 20px;
+        margin-top: 0;
+     }
+
+     .sllider-wrapper {
+        width: 90%;
+     }
+    
+
+    .contactcontainer {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .experience {
+        margin-top: 50px;
+        height: 100vh
+    }
+
+    .contact img {
+        width: 25px;
+    }
+
+    .contact .logos {
+        gap: 20px;
+    }
+
+    .contactcontainer {
+        gap: 10px;
+    }
+    
 }

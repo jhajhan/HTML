@@ -68,10 +68,12 @@ input[type = "text"], input[type = "date"] ,select {
     padding: 10px; 
     border-radius: 5px; 
     border: 1px solid #ccc;
-    font-size: 14px; 
+    font-size: 100%; 
 }
 
-input[type = "button"] {
+input[type = "submit"] {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%;
     width: 100%;
     height: 40px;
     align-self: center;
