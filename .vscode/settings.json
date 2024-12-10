@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/Registration Form/registration-form.html"
+    "livePreview.defaultPreviewPath": "/Registration Form/registration-form.html",
+    "liveServer.settings.port": 5501
 }

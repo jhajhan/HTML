@@ -122,7 +122,7 @@ body {
     margin-left: 100px;
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 440px;
 }
 
 .textcontainer h1 {

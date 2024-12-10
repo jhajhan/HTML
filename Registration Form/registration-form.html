@@ -39,6 +39,12 @@
                         <input type = "radio" id = "na" name = "gender" value = "Na">
                         <label for = "na">Prefer not to say</label>
                     </div>
+
+
+                    <div class = "profile-photo">
+                        <label for = "profile">Profile Picture</label>
+                        <input type = "file" id = "profile">
+                    </div>
                 </section>
 
                 <section class = "address-information">
@@ -46,10 +52,13 @@
 
                         <label for = "city">City</label>
                         <select id = "city" name = "city" required>
+                            <option value="" selected disabled>Select a city</option>
                         </select>
     
                         <label for = "barangay">Barangay</label>
-                        <select id = "barangay" name = "barangay" required></select>
+                        <select id = "barangay" name = "barangay" required>
+                            <option value="" selected disabled>Select a barangay</option>
+                        </select>
     
                         <label for = "street-address">Street Address</label>
                         <input type = "text" id = "street-address" class = "street-address" required>
@@ -127,6 +136,7 @@
 
 
             </form>
+            
         </div>
 
         <script src = "app.js"></script>
