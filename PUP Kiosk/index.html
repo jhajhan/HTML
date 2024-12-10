@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <title>PUP Kiosk</title>
+    </head>
+
+    <body>
+        <header>
+            <img src = "img/puplogo.png" alt = 'PUP Logo'>
+            <h1>Welcome to the Polytechnic University of the Philippines!</h1>
+        </header>
+
+        
+        <div class = 'map-container'>
+            <div class = 'info-box' id = 'info-box'></div>
+            <img src = "img/pupmap.png" alt = "PUP-MAP" usemap="#kioskmap">
+
+            <map name = "kioskmap">
+                <area shape = "poly" coords="280,312,329,317,324,334,308,340,292,339,284,331,280,321" title = "Amphitheater" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="200,45,200,52,207,52,206,66,216,70,216,82,226,82,226,73,222,67,227,60,227,45" title = "Bandang Kawayan, Sining Lahi Headquarters" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="240,549,304,568" title = "Building and Grounds Maintenance Office" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="458,160,451,167,495,245,509,250,715,253,712,246,505,242" title = "Catwalk" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="391,249,404,269" title = "Centennial Monument" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="94,227,111,199,203,254,188,281" title = "Charlie del Rosario Student Development Center" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="704,515,722,515,704,523,716,524,717,540,702,541,702,550,717,551,724,527" title = "Eastgate" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "circle" coords="422,349,11" title = "Flagpole" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="542,331,559,343,510,410,496,402" title = "Grandstand" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="529,64,658,129" title = "Gymnasium" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "circle" coords="394,473,58" title = "Interfaith Chapel" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="117,68,98,90,93,99,86,115,80,125,96,151,90,164,207,233,213,220,191,189,199,179,190,143,186,107" title = "Laboratory High School" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                /**/
+                <area shape = "poly" coords="274,303,288,295,303,281,307,264,315,250,325,235,328,223,325,196,326,187,337,178,349,181,351,220,355,238,371,265,371,277,370,286,359,298,331,304" title = "Lagoon" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="281,374,268,387,263,396,256,413,270,438,287,442,297,442,314,437,327,414,323,397,319,388,306,375" title = "Main Building - Dome" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="270,437,267,532,277,532,278,537,287,537,288,543,302,541,303,534,311,533,314,437,297,441,287,442" title = "Main Building - East Wing" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="388,329,391,335,399,331,407,347,403,351,408,358,405,360,408,371,327,414,325,396,319,387,306,374" title = "Main Building - North Wing" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="256,414,229,429,214,399,209,402,201,389,161,410,167,422,162,426,209,512,214,510,223,526,262,503,254,487,258,482,243,453,270,439" title = "Main Building - South Wing" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="281,374,200,324,195,333,189,330,183,339,173,352,180,356,177,364,255,413,262,396,268,387" title = "Main Building - West Wing" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="719,252,736,273" title = "Main Gate" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="420,286,402,314,464,370,479,350,491,347,559,299,542,274,499,274,483,286,464,296,447,297" title = "Nemesio E. Prudente Freedom Park" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="237,65,270,57,288,122,348,107,357,138,296,157,313,224,282,233,262,161,250,164,229,186,215,130,241,144,257,137" title = "Ninoy Aquino Library and Learning Resources Center" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="488,163,535,205" title = "Open Court" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="311,549,447,568" title = "Open University/Nontraditional Studies Program" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="578,320,497,437,499,451,498,472,501,484,505,495,512,508,523,521,535,530,546,536,559,540,573,542,587,542,598,540,610,536,620,530,628,524,638,516,702,424,708,404,710,385,708,371,705,359,699,347,692,337,684,326,672,319,662,313,650,309,636,306,622,307,610,309,592,316" title = "Oval Open Field" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="370,52,402,166" title = "P.E. Building" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="1,32,26,65,28,74,37,83,42,112,43,139,56,181,69,213,76,248,88,272,86,321,90,334,91,356,98,364,112,381,112,407,120,421,127,434,129,465,135,477,130,511,144,559,150,593,1,594" title = "Pasig River" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="159,522,178,579" title = "Pasig River Ferry (Sta. Mesa Station)" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="424,398,592,275,599,287,442,411" title = "Proposed Access Road" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="161,274,153,290,167,298,175,283" title = "Public Restroom" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="132,407,138,407,132,393,137,375,152,352,111,336" title = "Linear Park" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="734,304,740,305,737,291,730,280,723,274,708,271,628,270,628,279,707,278,713,277,718,279,723,285,728,292" title = "PUP Mural and the Shrine of Heroism" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "circle" coords="454,262,19" title = "PUP Obelisk (and the Mabini Monument)" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="53,46,53,54,62,54,63,93,75,93,75,62,87,61,88,54,98,53,98,45" title = "PUP Property Building and Motorpool" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="721,230,730,244" title = "PUP Pylon" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="133,288,121,304,135,312,121,332,147,347,170,311" title = "Sampaguita Building" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="571,289,557,276" title = "Student Pavilion" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="424,71,511,118" title = "Swimming Pool" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="569,163,629,206" title = "Tennis Open Court" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "poly" coords="223,89,232,89,240,96,240,105,233,113,222,113,214,106,216,97" title = "Water Tank" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+                <area shape = "rect" coords="734,167,727,199" title = "West Gate" onmouseover="showInfo(event, this)"  onmouseout="hideInfo()"  data-info = "PUP Oval" data-img = "img/oval.jpg">
+
+            </map>
+        </div>
+
+        <script>
+            let infoBox = document.getElementById('info-box');
+            
+            function showInfo (event, area) {
+                const title = area.getAttribute('title');
+                const info = area.getAttribute('data-info');
+                const img = area.getAttribute('data-img')
+                infoBox.innerHTML = `
+                <h4>${title}</h4>
+                <div class = 'info-dets'><img src = "${img}">
+                <p>${info}</p></div>`;
+
+                infoBox.style.display = 'block';
+                infoBox.style.left = `${event.pageX - infoBox.offsetHeight - 10}px`
+                infoBox.style.top = `${event.pageY - 100}px`;
+            }
+
+            function hideInfo(){
+                infoBox.style.display = 'none';
+            }
+        </script>
+    </body>
+
+</html>

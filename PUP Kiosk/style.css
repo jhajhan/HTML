@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    background-image: linear-gradient(to right, white 70%, rgba(132, 4, 4, 0)), url("img/pupbg.png");
+    background-size: cover;
+}
+header {
+    background-color: #840404;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+    height: 100vh;
+    margin-top: 0;
+
+}
+
+header img {
+    width: 260px;
+    height: 260px;
+    background-color:#840404;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+header h1 {
+    color: #ebd7cf;
+}
+
+.map-container {
+    position: relative;
+    margin-top: 70px;
+}
+
+.info-box {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    transform: translate(-50%, -50%); 
+    background-color: white;
+    padding: 5px;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    pointer-events: none; 
+    max-width: 500px;
+    gap: 10px;
+    border-style: dashed;
+    border-color: #840404;
+    
+}
+
+.info-box .info-dets {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-box h4 {
+    color:#840404;
+    padding: 0;
+    margin: 5px;
+}
+
+.info-box img {
+    width: 150px;
+    border-width: 5px;
+    padding: 0px;
+    margin: 5px;
+
+}
