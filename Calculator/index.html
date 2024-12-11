@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+    </head>
+
+    <body>
+        <div class = "calculator">
+            <div class = "in-res">
+                <p id = "input"></p>
+                <input id = "result" value = 0>
+            </div>
+
+            <div class = "memory">
+                <button id = "m-clear">MC</button>
+                <button id = "m-recall">MC</button>
+                <button id = "m-add">M+</button>
+                <button id = "m-subtract">M-</button>
+                <button id = "m-store">MS</button>
+                <button id = "memory">M</button>
+            </div>
+
+            <div class = "row">
+                <button id = "percent">%</button>
+                <button id = "ce" onclick = "clearEntry()">CE</button>
+                <button id = "c" onclick = "clearAll()">C</button>
+                <button id = "c-icon" onclick = "erase()">C-ICON</button>
+            </div>
+
+            <div class = "row">
+                <button id = "bin">BIN</button>
+                <button id = "oct">OCT</button>
+                <button id = "hex">HEX</button>
+                <button id = "divi" value = "÷" onclick = "operation(this)">/</button>
+            </div>
+
+            <div class = "row">
+                <button id = "seven" value="7" onclick="showNumber(this)">7</button>
+                <button id = "eight" value="8" onclick="showNumber(this)">8</button>
+                <button id = "nine" value="9" onclick="showNumber(this)">9</button>
+                <button id = "mul" value = "×" onclick = "operation(this)">x</button>
+            </div>
+
+            <div class = "row">
+                <button id = "four" value="4" onclick="showNumber(this)">4</button>
+                <button id = "five" value="5" onclick="showNumber(this)">5</button>
+                <button id = "six" value="6" onclick="showNumber(this)">6</button>
+                <button id = "sub" value = "-" onclick = "operation(this)">-</button>
+            </div>
+
+            <div class = "row">
+                <button id = "one" value="1" onclick="showNumber(this)">1</button>
+                <button id = "two" value="2" onclick="showNumber(this)">2</button>
+                <button id = "three" value="3" onclick="showNumber(this)">3</button>
+                <button id = "add" value = "+" onclick = "operation(this)">+</button>
+            </div>
+
+            <div class = "row">
+                <button id = "pos-neg">+/-</button>
+                <button id = "zero">0</button>
+                <button id = "point">.</button>
+                <button id = "equal" onclick = "equals()">=</button>
+            </div>
+        </div>
+
+        <script>
+
+            let number = 0;
+            let operator_holder = "";
+            let equals_holder = 0;
+
+            function showNumber(number) {
+
+                let digit = number.getAttribute('value');
+                let current_value = document.getElementById('result').value;
+                
+
+                if (current_value == 0 || operator_holder != "") {
+                    document.getElementById('result').value = digit;
+                    
+                } else {
+                    document.getElementById('result').value += digit;
+                }
+                
+            }
+
+            function erase() {
+                let input_field = document.getElementById('result');
+
+                if (equals_holder != 0) {
+                    document.getElementById('input').textContent = "";
+                    equals_holder = 0;
+
+                } else {
+                    input_field.value = input_field.value.substring(0, input_field.value.length - 1);
+                }
+            }
+
+            function clearAll() {
+                document.getElementById('result').value = "0";
+                document.getElementById('input').textContent = "";
+    
+            }
+
+            function clearEntry () {
+                document.getElementById('result').value = "0";
+            }
+
+            function operation(operator) {
+                let digit = document.getElementById('result').value;
+                number = digit;
+                let operator_value = operator.value;
+                operator_holder = operator.value;
+                document.getElementById('input').textContent = digit + " " + operator_value;
+            }
+
+            function equals () {
+                let digit = document.getElementById('result').value;
+                document.getElementById('input').textContent += " " + digit + " =";
+                
+
+                switch(operator_holder) {
+                    case "+": equals_holder = number = document.getElementById('result').value = parseFloat(number) + parseFloat(digit); break;
+                    case "-": equals_holder = number = document.getElementById('result').value = parseFloat(number) - parseFloat(digit); break;
+                    case "×": equals_holder = number = document.getElementById('result').value = parseFloat(number) * parseFloat(digit); break;;
+                    case "÷": equals_holder = number = document.getElementById('result').value = parseFloat(number) / parseFloat(digit); break;
+                }
+            }
+        </script>
+    </body>
+</html>
