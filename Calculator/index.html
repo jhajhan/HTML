@@ -14,25 +14,28 @@
             </div>
 
             <div class = "memory">
-                <button id = "m-clear">MC</button>
-                <button id = "m-recall">MC</button>
-                <button id = "m-add">M+</button>
-                <button id = "m-subtract">M-</button>
-                <button id = "m-store">MS</button>
-                <button id = "memory">M</button>
+                <button id = "m-clear" disabled onclick="clearMemory()">MC</button>
+                <button id = "m-recall" disabled onclick="recallMemory()">MR</button>
+                <button id = "m-add" onclick="addMemory()">M+</button>
+                <button id = "m-subtract" onclick="subtractMemory()">M-</button>
+                <button id = "m-store" onclick="storeMemory()">MS</button>
+                <select id = "memory" disabled onclick="displayMemory()">
+                    <option>M</option>
+                </select>
+                <div id = "memory-display"></div>
             </div>
 
             <div class = "row">
-                <button id = "percent">%</button>
+                <button id = "percent" value = "%" onclick="operation(this)">%</button>
                 <button id = "ce" onclick = "clearEntry()">CE</button>
                 <button id = "c" onclick = "clearAll()">C</button>
                 <button id = "c-icon" onclick = "erase()">C-ICON</button>
             </div>
 
             <div class = "row">
-                <button id = "bin">BIN</button>
-                <button id = "oct">OCT</button>
-                <button id = "hex">HEX</button>
+                <button id = "bin" onclick="convertBetweenBases(2)">BIN</button>
+                <button id = "oct" onclick="convertBetweenBases(8)">OCT</button>
+                <button id = "hex"  onclick="convertBetweenBases(16)">HEX</button>
                 <button id = "divi" value = "÷" onclick = "operation(this)">/</button>
             </div>
 
@@ -58,10 +61,10 @@
             </div>
 
             <div class = "row">
-                <button id = "pos-neg">+/-</button>
-                <button id = "zero">0</button>
-                <button id = "point">.</button>
-                <button id = "equal" onclick = "equals()">=</button>
+                <button id = "pos-neg" onclick="posNeg()">+/-</button>
+                <button id = "zero" value = "0" onclick="showNumber(this)">0</button>
+                <button id = "point" value = "." onclick="showNumber(this)">.</button>
+                <button id = "equal" onclick = "equals(true)">=</button>
             </div>
         </div>
 
@@ -70,11 +73,20 @@
             let number = 0;
             let operator_holder = "";
             let equals_holder = 0;
+            let base = 0;
+            let memory = [];
+
 
             function showNumber(number) {
 
                 let digit = number.getAttribute('value');
                 let current_value = document.getElementById('result').value;
+
+                if (digit == ".") {
+                    if (current_value.includes(".")) {
+                        return;
+                    }
+                }
                 
 
                 if (current_value == 0 || operator_holder != "") {
@@ -101,6 +113,10 @@
             function clearAll() {
                 document.getElementById('result').value = "0";
                 document.getElementById('input').textContent = "";
+                number = 0;
+                operator_holder = "";
+                equals_holder = 0;
+                base = 0;
     
             }
 
@@ -109,25 +125,131 @@
             }
 
             function operation(operator) {
-                let digit = document.getElementById('result').value;
-                number = digit;
+                let digit = document.getElementById('result').value;    
                 let operator_value = operator.value;
+
+                if (operator_holder != "") {
+                    equals(false);
+                    operator_holder = operator.value;
+                    document.getElementById('input').textContent = equals_holder + " " + operator_holder;
+                    
+                    return;
+                }
+
+                number = digit;
+            
+
                 operator_holder = operator.value;
                 document.getElementById('input').textContent = digit + " " + operator_value;
+
             }
 
-            function equals () {
+            function equals (first) {
                 let digit = document.getElementById('result').value;
-                document.getElementById('input').textContent += " " + digit + " =";
+                
+                if (first) {
+                    document.getElementById('input').textContent += " " + digit + " =";
+                }
                 
 
                 switch(operator_holder) {
-                    case "+": equals_holder = number = document.getElementById('result').value = parseFloat(number) + parseFloat(digit); break;
-                    case "-": equals_holder = number = document.getElementById('result').value = parseFloat(number) - parseFloat(digit); break;
-                    case "×": equals_holder = number = document.getElementById('result').value = parseFloat(number) * parseFloat(digit); break;;
-                    case "÷": equals_holder = number = document.getElementById('result').value = parseFloat(number) / parseFloat(digit); break;
+                    case "+": equals_holder = number = document.getElementById('result').value = parseFloat(number) + parseFloat(digit); operator_holder = ""; console.log(number); break;
+                    case "-": equals_holder = number = document.getElementById('result').value = parseFloat(number) - parseFloat(digit); operator_holder = ""; break;
+                    case "×": equals_holder = number = document.getElementById('result').value = parseFloat(number) * parseFloat(digit); operator_holder = ""; break;;
+                    case "÷": equals_holder = number = document.getElementById('result').value = parseFloat(number) / parseFloat(digit); operator_holder = ""; break;
+                    case "%": equals_holder = number = document.getElementById('result').value = parseFloat(number) / 100; break;
                 }
             }
+
+            function convertBetweenBases(toBase) {
+                let input = document.getElementById('result').value.trim(); 
+                let fromBase = detectNumberSystem(input);
+
+                if (fromBase === "Invalid") {
+                    return;
+                }
+
+                if (base != 0) {
+                    fromBase = base;
+                }
+
+
+                const decimal = parseInt(input, fromBase);
+                console.log(fromBase);
+                console.log(decimal);
+
+                if (isNaN(decimal)) {
+                    return;
+                }
+
+                // Convert to the desired base and update output
+               
+                document.getElementById('result').value= decimal.toString(toBase).toUpperCase();
+                base = toBase;
+            }
+
+            function detectNumberSystem(input) {
+                if (input.startsWith("0b") && /^[01]+$/.test(input.slice(2))) {
+                    return 2; // Binary with prefix
+                } else if (input.startsWith("0o") && /^[0-7]+$/.test(input.slice(2))) {
+                    return 8; // Octal with prefix
+                } else if (input.startsWith("0x") && /^[0-9A-Fa-f]+$/.test(input.slice(2))) {
+                    return 16; // Hexadecimal with prefix
+                } else if (/^[01]+$/.test(input)) {
+                    return 2; // Binary without prefix
+                } else if (/^[0-9]+(\.[0-9]+)?$/.test(input)) { 
+                    return 10; // Decimal with or without a point
+                } else {
+                    return "Invalid"; // Not a valid number
+                }
+            }
+
+            function storeMemory() {
+                memory.push(parseFloat(document.getElementById('result').value));
+                document.getElementById("memory").disabled = false;
+                document.getElementById("m-clear").disabled = false;
+                document.getElementById("m-recall").disabled = false;
+                console.log(memory[0]);
+            }
+
+            function addMemory() {
+                memory[memory.length - 1] += parseFloat(document.getElementById('result').value);
+            }
+
+            function subtractMemory() {
+                memory[memory.length - 1] -= parseFloat(document.getElementById('result').value);
+            }
+
+            function recallMemory() {
+                document.getElementById('result').value = memory[memory.length - 1];
+            }
+
+            function clearMemory() {
+                memory = [];
+                document.getElementById("memory").disabled = true;
+                document.getElementById("m-clear").disabled = true;
+                document.getElementById("m-recall").disabled = true;
+            }
+
+            function displayMemory() {
+                let memoryDisplay = document.getElementById("memory");
+                memoryDisplay.innerHTML = "";
+                memoryDisplay.add(new Option('M'));
+
+                for (let i = memory.length - 1; i >= 0; i--) {
+                    memoryDisplay.add(new Option(memory[i]));
+                }
+            }
+
+            function posNeg() {
+                const resultElement = document.getElementById('result');
+                const value = parseFloat(resultElement.value); // Get numeric value
+                resultElement.value = -value; 
+                console.log('')
+            }
+
+        
+            
         </script>
     </body>
 </html>

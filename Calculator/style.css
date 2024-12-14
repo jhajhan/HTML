@@ -57,7 +57,11 @@ body {
     gap: 8px;
 }
 
-.memory button {
+#memory-display {
+    display: none;
+}
+
+.memory button, select {
     width: 50px;
     border-radius: 30px;
     height: 30px;
@@ -65,6 +69,11 @@ body {
     border: none;
 
 }
+
+select {
+    text-align: center;
+}
+
 
 [class^="row"] {
     display: flex;
