@@ -1,10 +1,22 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     display: flex;
     flex-direction: row;
-    gap: 30px;
-    background-image: linear-gradient(to right, white 70%, rgba(132, 4, 4, 0)), url("img/pupbg.png");
+    gap: 0px;
+    background-image: url("img/pupbg.png");
     background-size: cover;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
 header {
     background-color: #840404;
     display: flex;
@@ -14,7 +26,7 @@ header {
     text-align: center;
     width: 20%;
     height: 100vh;
-    margin-top: 0;
+
 
 }
 
@@ -32,7 +44,31 @@ header h1 {
 
 .map-container {
     position: relative;
-    margin-top: 70px;
+    border-radius: 10px;
+}
+
+.map-container img {
+    box-shadow: 10px 0 20px white;   /* Right shadow */
+    margin-top: 0;
+}
+
+.kiosktitle {
+    height: 60px;
+    background-color: white;
+    margin-bottom: 4px;
+    align-content: center;
+    justify-items: center;
+}
+
+.kiosktitle h3 {
+    font-family: 'Montserrat';
+    color: #840404;
+    font-weight: bolder;
+
+}
+
+.kiosktitle p {
+    font-size: smaller;
 }
 
 .info-box {
@@ -48,14 +84,15 @@ header h1 {
     pointer-events: none; 
     max-width: 500px;
     gap: 10px;
-    border-style: dashed;
-    border-color: #840404;
+    box-shadow: 0 0 15px #840404;
+    position: absolute;
     
 }
 
 .info-box .info-dets {
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 
 .info-box h4 {
@@ -65,9 +102,16 @@ header h1 {
 }
 
 .info-box img {
-    width: 150px;
-    border-width: 5px;
+    width: 120px;
+    height: 120px;
+    border-width: 50px;
+    border-color: #ebd7cf;
     padding: 0px;
     margin: 5px;
+    border-radius: 10px;
 
+}
+
+.info-box p {
+    max-width: 350px;
 }
