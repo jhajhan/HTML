@@ -53,22 +53,29 @@ header h1 {
 }
 
 .kiosktitle {
-    height: 60px;
+    height: 45px;
     background-color: white;
     margin-bottom: 4px;
     align-content: center;
     justify-items: center;
+    text-align: center;
 }
 
 .kiosktitle h3 {
     font-family: 'Montserrat';
     color: #840404;
     font-weight: bolder;
+    align-self: center;
+    justify-self: center;
+    font-size: 25px;
+    margin-top: 8px;
 
 }
 
 .kiosktitle p {
-    font-size: smaller;
+    font-size: 15px;
+    font-family: 'Montserrat';
+
 }
 
 .info-box {
@@ -77,12 +84,13 @@ header h1 {
     flex-direction: column;
     transform: translate(-50%, -50%); 
     background-color: white;
-    padding: 5px;
+    padding: 10px;
     align-items: center;
     justify-items: center;
     border-radius: 10px;
     pointer-events: none; 
-    max-width: 500px;
+    min-width: 280px;
+    max-width: 320px;
     gap: 10px;
     box-shadow: 0 0 15px #840404;
     position: absolute;
@@ -93,12 +101,15 @@ header h1 {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
 }
 
 .info-box h4 {
     color:#840404;
-    padding: 0;
     margin: 5px;
+    text-align: center;
 }
 
 .info-box img {
@@ -106,12 +117,12 @@ header h1 {
     height: 120px;
     border-width: 50px;
     border-color: #ebd7cf;
-    padding: 0px;
     margin: 5px;
     border-radius: 10px;
 
 }
 
 .info-box p {
-    max-width: 350px;
+    text-align: justify;
+    margin-right: 5px;
 }

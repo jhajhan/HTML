@@ -8,9 +8,9 @@
 
     <body>
         <div class = "calculator">
-            <div class = "in-res">
-                <p id = "input"></p>
-                <input id = "result" value = 0>
+            <div class = "input_div">
+                <p id = "input_holder">  </p>
+                <input id = "input_field" value = 0>
             </div>
 
             <div class = "memory">
@@ -29,7 +29,7 @@
                 <button id = "percent" value = "%" onclick="operation(this)">%</button>
                 <button id = "ce" onclick = "clearEntry()">CE</button>
                 <button id = "c" onclick = "clearAll()">C</button>
-                <button id = "c-icon" onclick = "erase()">C-ICON</button>
+                <button id = "erase" onclick = "erase()">⌫</button>
             </div>
 
             <div class = "row">
@@ -70,50 +70,58 @@
 
         <script>
 
-            let number = 0;
-            let operator_holder = "";
-            let equals_holder = 0;
-            let base = 0;
+            let operand_holder = 0;
+            let operator_holder = ""; // to store current operator
+            let equals_holder = 0; // to store current result
             let memory = [];
+            let anotherOperand = false;
+            let base = 0;
+            let isEquals = false;
+            
 
 
             function showNumber(number) {
 
                 let digit = number.getAttribute('value');
-                let current_value = document.getElementById('result').value;
+                let input_field_value = document.getElementById('input_field').value;
 
                 if (digit == ".") {
-                    if (current_value.includes(".")) {
+                    if (current_value.includes(".")) { //to ensure only one point can be typed
                         return;
                     }
                 }
                 
 
-                if (current_value == 0 || operator_holder != "") {
-                    document.getElementById('result').value = digit;
+                if (input_field_value == 0 || anotherOperand) { // if a number is not yet typed or another operand is typed
+                    document.getElementById('input_field').value = digit;
+                    anotherOperand = false;
+
                     
                 } else {
-                    document.getElementById('result').value += digit;
-                }
-                
+                    document.getElementById('input_field').value += digit;
+                }       
             }
 
             function erase() {
-                let input_field = document.getElementById('result');
+                let input_field = document.getElementById('input_field');
 
                 if (equals_holder != 0) {
-                    document.getElementById('input').textContent = "";
+                    document.getElementById('input_holder').textContent = "";
                     equals_holder = 0;
 
                 } else {
                     input_field.value = input_field.value.substring(0, input_field.value.length - 1);
                 }
+
+                if (input_field.value.length == 0) {
+                    input_field.value = "0";
+                }
             }
 
             function clearAll() {
-                document.getElementById('result').value = "0";
-                document.getElementById('input').textContent = "";
-                number = 0;
+                document.getElementById('input_field').value = "0";
+                document.getElementById('input_holder').textContent = "";
+                operand_holder = 0;
                 operator_holder = "";
                 equals_holder = 0;
                 base = 0;
@@ -121,60 +129,76 @@
             }
 
             function clearEntry () {
-                document.getElementById('result').value = "0";
+                document.getElementById('input_field').value = "0";
+                if (isEquals) {
+                    document.getElementById('input_holder').textContent = "";
+                }
             }
 
             function operation(operator) {
-                let digit = document.getElementById('result').value;    
-                let operator_value = operator.value;
 
-                if (operator_holder != "") {
-                    equals(false);
+                let operand = document.getElementById('input_field').value;   
+                
+                if (operator.value == "%") {
+                    console.log('hello');
                     operator_holder = operator.value;
-                    document.getElementById('input').textContent = equals_holder + " " + operator_holder;
-                    
+                    operand_holder = operand;
+                    equals(true);
+                    document.getElementById('input_holder').textContent = operand + " " + operator.value;
                     return;
                 }
 
-                number = digit;
-            
+                if (operator_holder != "") { // if operator is not the first
+                    equals(false); 
+                    operator_holder = operator.value;
+                    document.getElementById('input_holder').textContent = equals_holder + " " + operator_holder;
+                    anotherOperand = true; // another operand is to be typed            
+                    return;
+                }
 
+                
+
+                operand_holder = operand;
                 operator_holder = operator.value;
-                document.getElementById('input').textContent = digit + " " + operator_value;
+                document.getElementById('input_holder').textContent = operand + " " + operator.value;
+                anotherOperand = true; // another operand is to be typed 
+                isEquals = false;
 
             }
 
-            function equals (first) {
-                let digit = document.getElementById('result').value;
-                
-                if (first) {
-                    document.getElementById('input').textContent += " " + digit + " =";
+            function equals (isFirstOperator) {
+                let operand = document.getElementById('input_field').value;
+ 
+                if (isFirstOperator && operator_holder != "%") {
+                    document.getElementById('input_holder').textContent += " " + operand + " =";
                 }
-                
+
+                console.log(operator_holder);
+                console.log(operand_holder);
 
                 switch(operator_holder) {
-                    case "+": equals_holder = number = document.getElementById('result').value = parseFloat(number) + parseFloat(digit); operator_holder = ""; console.log(number); break;
-                    case "-": equals_holder = number = document.getElementById('result').value = parseFloat(number) - parseFloat(digit); operator_holder = ""; break;
-                    case "×": equals_holder = number = document.getElementById('result').value = parseFloat(number) * parseFloat(digit); operator_holder = ""; break;;
-                    case "÷": equals_holder = number = document.getElementById('result').value = parseFloat(number) / parseFloat(digit); operator_holder = ""; break;
-                    case "%": equals_holder = number = document.getElementById('result').value = parseFloat(number) / 100; break;
+                    case "+": equals_holder = operand_holder = document.getElementById('input_field').value = parseFloat(operand_holder) + parseFloat(operand); operator_holder = ""; isEquals = true; break;
+                    case "-": equals_holder = operand_holder = document.getElementById('input_field').value = parseFloat(operand_holder) - parseFloat(operand); operator_holder = ""; isEquals = true; break;
+                    case "×": equals_holder = operand_holder = document.getElementById('input_field').value = parseFloat(operand_holder) * parseFloat(operand); operator_holder = ""; isEquals = true; break;;
+                    case "÷": equals_holder = operand_holder = document.getElementById('input_field').value = parseFloat(operand_holder) / parseFloat(operand); operator_holder = ""; isEquals = true; break;
+                    case "%": equals_holder = operand_holder = document.getElementById('input_field').value = parseFloat(operand_holder) / 100; console.log('yow'); break;
                 }
             }
 
             function convertBetweenBases(toBase) {
-                let input = document.getElementById('result').value.trim(); 
-                let fromBase = detectNumberSystem(input);
+                let input_field_value = document.getElementById('input_field').value.trim(); 
+                let fromBase = detectNumberSystem(input_field_value);
 
                 if (fromBase === "Invalid") {
                     return;
                 }
 
-                if (base != 0) {
+                if (base != 0) {     
                     fromBase = base;
                 }
 
 
-                const decimal = parseInt(input, fromBase);
+                let decimal = parseInt(input_field_value, fromBase);
                 console.log(fromBase);
                 console.log(decimal);
 
@@ -184,7 +208,7 @@
 
                 // Convert to the desired base and update output
                
-                document.getElementById('result').value= decimal.toString(toBase).toUpperCase();
+                document.getElementById('input_field').value= decimal.toString(toBase).toUpperCase();
                 base = toBase;
             }
 
@@ -205,7 +229,7 @@
             }
 
             function storeMemory() {
-                memory.push(parseFloat(document.getElementById('result').value));
+                memory.push(parseFloat(document.getElementById('input_field').value));
                 document.getElementById("memory").disabled = false;
                 document.getElementById("m-clear").disabled = false;
                 document.getElementById("m-recall").disabled = false;
@@ -213,15 +237,15 @@
             }
 
             function addMemory() {
-                memory[memory.length - 1] += parseFloat(document.getElementById('result').value);
+                memory[memory.length - 1] += parseFloat(document.getElementById('input_field').value);
             }
 
             function subtractMemory() {
-                memory[memory.length - 1] -= parseFloat(document.getElementById('result').value);
+                memory[memory.length - 1] -= parseFloat(document.getElementById('input_field').value);
             }
 
             function recallMemory() {
-                document.getElementById('result').value = memory[memory.length - 1];
+                document.getElementById('input_field').value = memory[memory.length - 1];
             }
 
             function clearMemory() {
@@ -242,10 +266,9 @@
             }
 
             function posNeg() {
-                const resultElement = document.getElementById('result');
-                const value = parseFloat(resultElement.value); // Get numeric value
-                resultElement.value = -value; 
-                console.log('')
+                const input_field = document.getElementById('input_field');
+                const value = parseFloat(input_field.value); // Get numeric value
+                input_field.value = -value; 
             }
 
         

@@ -17,7 +17,7 @@ body {
     gap: 5px;
 }
 
-.in-res {
+.input_div {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -36,21 +36,24 @@ body {
 }
 
 
-.in-res input {
+#input_field {
     border: none;
     outline: none;
     height: 50px;
     font-size: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align: right;
     pointer-events: none;
 
 }
 
-.input {
-    color:#433878;
-    text-align: right;
+#input_holder {
+    height: 10px;
+    margin-top: 10px;
+    padding-top: 5px;
 }
+
+
 
 .memory {
     display: flex;
@@ -97,6 +100,6 @@ select {
     background-color: #7E60BF;
 }
 
-#ce, #c, #c-icon {
+#ce, #c, #erase {
     background-color: #E4B1F0;
 }
