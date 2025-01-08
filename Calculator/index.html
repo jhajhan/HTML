@@ -19,7 +19,7 @@
                 <button id = "m-add" onclick="addMemory()">M+</button>
                 <button id = "m-subtract" onclick="subtractMemory()">M-</button>
                 <button id = "m-store" onclick="storeMemory()">MS</button>
-                <select id = "memory" disabled onclick="displayMemory()">
+                <select id = "memory" disabled>
                     <option>M</option>
                 </select>
                 <div id = "memory-display"></div>
@@ -75,8 +75,9 @@
             let equals_holder = 0; // to store current result
             let memory = [];
             let anotherOperand = false;
-            let base = 0;
+            let previousBaseUsed = 0;
             let isEquals = false;
+            let isDecimal = true;
             
 
 
@@ -85,8 +86,10 @@
                 let digit = number.getAttribute('value');
                 let input_field_value = document.getElementById('input_field').value;
 
+                console.log(digit);
+
                 if (digit == ".") {
-                    if (current_value.includes(".")) { //to ensure only one point can be typed
+                    if (input_field_value.includes(".")) { //to ensure only one point can be typed
                         return;
                     }
                 }
@@ -115,8 +118,10 @@
 
                 if (input_field.value.length == 0) {
                     input_field.value = "0";
+                    previousBaseUsed = 0;
                 }
             }
+
 
             function clearAll() {
                 document.getElementById('input_field').value = "0";
@@ -124,7 +129,7 @@
                 operand_holder = 0;
                 operator_holder = "";
                 equals_holder = 0;
-                base = 0;
+                previousBaseUsed = 0;
     
             }
 
@@ -133,6 +138,8 @@
                 if (isEquals) {
                     document.getElementById('input_holder').textContent = "";
                 }
+
+                previousBaseUsed = 0;
             }
 
             function operation(operator) {
@@ -185,48 +192,75 @@
                 }
             }
 
+            function isValidInput(input, base) {
+                const basePatterns = {
+                    2: /^[01]+(\.[01]+)?$/,         // Binary
+                    8: /^[0-7]+(\.[0-7]+)?$/,       // Octal
+                    10: /^[0-9]+(\.[0-9]+)?$/,      // Decimal
+                    16: /^[0-9A-Fa-f]+(\.[0-9A-Fa-f]+)?$/ // Hexadecimal
+                };
+
+                const pattern = basePatterns[base];
+                return pattern ? pattern.test(input) : false;
+    }
+
             function convertBetweenBases(toBase) {
-                let input_field_value = document.getElementById('input_field').value.trim(); 
-                let fromBase = detectNumberSystem(input_field_value);
+                let input_field = document.getElementById('input_field');
+                let input_field_value = input_field.value.trim(); 
+            
 
-                if (fromBase === "Invalid") {
-                    return;
-                }
-
-                if (base != 0) {     
-                    fromBase = base;
-                }
-
-
-                let decimal = parseInt(input_field_value, fromBase);
-                console.log(fromBase);
-                console.log(decimal);
-
-                if (isNaN(decimal)) {
-                    return;
-                }
-
-                // Convert to the desired base and update output
-               
-                document.getElementById('input_field').value= decimal.toString(toBase).toUpperCase();
-                base = toBase;
-            }
-
-            function detectNumberSystem(input) {
-                if (input.startsWith("0b") && /^[01]+$/.test(input.slice(2))) {
-                    return 2; // Binary with prefix
-                } else if (input.startsWith("0o") && /^[0-7]+$/.test(input.slice(2))) {
-                    return 8; // Octal with prefix
-                } else if (input.startsWith("0x") && /^[0-9A-Fa-f]+$/.test(input.slice(2))) {
-                    return 16; // Hexadecimal with prefix
-                } else if (/^[01]+$/.test(input)) {
-                    return 2; // Binary without prefix
-                } else if (/^[0-9]+(\.[0-9]+)?$/.test(input)) { 
-                    return 10; // Decimal with or without a point
+                if (previousBaseUsed == 0) {
+                    fromBase = 10;
                 } else {
-                    return "Invalid"; // Not a valid number
+                    fromBase = previousBaseUsed;
                 }
+
+                if (!isValidInput(input_field_value, fromBase)) {
+                    input_field.value = 'INVALID';
+                    return;
+                }
+
+                if (input_field_value.includes(".")) {
+                    input_field.value = convertFloatingPoint(input_field_value, fromBase, toBase);
+                } else {
+                    input_field.value = parseInt(input_field_value, fromBase).toString(toBase).toUpperCase();
+                }
+
+                previousBaseUsed = toBase;
+                    
             }
+
+            function convertFloatingPoint(input, fromBase, toBase) {
+                // Split input into integer and fractional parts
+                let [integerPart, fractionalPart] = input.split('.');
+                
+                // Parse the integer part
+                let integerResult = parseInt(integerPart, fromBase).toString(toBase);
+
+                // Parse the fractional part manually
+                let fractionalResult = '';
+                if (fractionalPart) {
+                    let fraction = 0;
+                    
+                    // Calculate fractional value
+                    for (let i = 0; i < fractionalPart.length; i++) {
+                        fraction += parseInt(fractionalPart[i], fromBase) / Math.pow(fromBase, i + 1);
+                    }
+
+                    // Convert fractional part to target base
+                    fractionalResult = '.';
+                    while (fraction > 0 && fractionalResult.length <= 10) { // Precision control
+                        fraction *= toBase;
+                        let digit = Math.floor(fraction);
+                        fractionalResult += digit.toString(toBase);
+                        fraction -= digit;
+                    }
+                }
+
+                // Combine integer and fractional parts
+                return (integerResult + fractionalResult).toUpperCase();
+            }
+
 
             function storeMemory() {
                 memory.push(parseFloat(document.getElementById('input_field').value));
@@ -234,14 +268,18 @@
                 document.getElementById("m-clear").disabled = false;
                 document.getElementById("m-recall").disabled = false;
                 console.log(memory[0]);
+
+                updateMemory();
             }
 
             function addMemory() {
                 memory[memory.length - 1] += parseFloat(document.getElementById('input_field').value);
+                updateMemory();
             }
 
             function subtractMemory() {
                 memory[memory.length - 1] -= parseFloat(document.getElementById('input_field').value);
+                updateMemory();
             }
 
             function recallMemory() {
@@ -255,7 +293,7 @@
                 document.getElementById("m-recall").disabled = true;
             }
 
-            function displayMemory() {
+            function updateMemory() {
                 let memoryDisplay = document.getElementById("memory");
                 memoryDisplay.innerHTML = "";
                 memoryDisplay.add(new Option('M'));
