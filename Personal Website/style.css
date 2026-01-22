@@ -359,7 +359,7 @@ body {
     margin-top: 0;             
     padding: 20px;           
     width: 1000px;  
-    height: 230px;             
+    height: 290px;             
     transition: transform 0.2s; 
 }
 
@@ -369,7 +369,7 @@ body {
 }
 
 .projects img {
-    width: 250px;              
+    width: 320px;              
     border-radius: 8px;      
     margin-right: 20px;        
 }
@@ -409,7 +409,7 @@ p.gm {
     background-color: white;
     width: 100%;
     height: 100vh; 
-    padding-top: 20px;
+    padding-top: 100px;
     display: flex; 
     flex-direction: column;
     justify-content: flex-start; 
@@ -444,12 +444,12 @@ p.gm {
 
 .slider {
     display: flex;
-    aspect-ratio: 1.5 / 1; 
-    overflow: hidden; 
+    aspect-ratio: 1.5 / 1;
+    overflow-x: auto; /* Changed to auto for better scroll snapping */
+    overflow-y: hidden; /* This prevents the vertical shift/jump */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     border-radius: 0.5rem;
-
 }
 
 .slider img {
@@ -544,6 +544,14 @@ p.gm {
     color:#DCCAE9;
     font-size: 0.6rem;
     margin-top: 50px;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+.slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 @media (max-width: 980px) {
